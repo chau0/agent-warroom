@@ -1,0 +1,1046 @@
+i<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PRD - Agent Warroom: AI Agents Debate My App Idea</title>
+  <style>
+    :root {
+      --bg: #f7f7f8;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --accent: #111827;
+      --accent-soft: #eef2ff;
+      --success: #16a34a;
+      --warning: #d97706;
+      --danger: #dc2626;
+      --code-bg: #111827;
+      --code-text: #e5e7eb;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .page {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #111827, #312e81);
+      color: white;
+      border-radius: 28px;
+      padding: 48px;
+      margin-bottom: 32px;
+      box-shadow: 0 24px 60px rgba(17, 24, 39, 0.18);
+    }
+
+    .hero h1 {
+      font-size: 42px;
+      line-height: 1.1;
+      margin: 0 0 16px;
+      letter-spacing: -0.04em;
+    }
+
+    .hero p {
+      max-width: 780px;
+      margin: 0;
+      font-size: 18px;
+      color: #d1d5db;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 32px;
+    }
+
+    .meta-card {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 18px;
+      padding: 16px;
+    }
+
+    .meta-card span {
+      display: block;
+      font-size: 12px;
+      color: #c7d2fe;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 6px;
+    }
+
+    .meta-card strong {
+      font-size: 15px;
+      color: white;
+    }
+
+    .section {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 32px;
+      margin-bottom: 24px;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
+    }
+
+    h2 {
+      font-size: 26px;
+      margin: 0 0 16px;
+      letter-spacing: -0.03em;
+    }
+
+    h3 {
+      font-size: 19px;
+      margin: 28px 0 10px;
+    }
+
+    p {
+      margin: 0 0 14px;
+    }
+
+    ul, ol {
+      margin-top: 8px;
+      padding-left: 24px;
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      overflow: hidden;
+      border-radius: 14px;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 12px 14px;
+      text-align: left;
+      vertical-align: top;
+      font-size: 14px;
+    }
+
+    th {
+      background: #f3f4f6;
+      font-weight: 700;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      padding: 4px 10px;
+      font-size: 12px;
+      font-weight: 700;
+      background: var(--accent-soft);
+      color: #3730a3;
+      margin-right: 6px;
+    }
+
+    .badge.success {
+      background: #dcfce7;
+      color: var(--success);
+    }
+
+    .badge.warning {
+      background: #fef3c7;
+      color: var(--warning);
+    }
+
+    .badge.danger {
+      background: #fee2e2;
+      color: var(--danger);
+    }
+
+    .flow {
+      background: #f9fafb;
+      border: 1px dashed #cbd5e1;
+      border-radius: 18px;
+      padding: 20px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      white-space: pre-wrap;
+      color: #111827;
+    }
+
+    code, pre {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+    }
+
+    pre {
+      background: var(--code-bg);
+      color: var(--code-text);
+      border-radius: 18px;
+      padding: 20px;
+      overflow-x: auto;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .callout {
+      border-left: 5px solid #4f46e5;
+      background: #eef2ff;
+      border-radius: 14px;
+      padding: 16px 18px;
+      margin: 18px 0;
+    }
+
+    .decision-rules {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .decision-card {
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 18px;
+      background: #f9fafb;
+    }
+
+    .decision-card strong {
+      display: block;
+      font-size: 18px;
+      margin-bottom: 6px;
+    }
+
+    @media (max-width: 820px) {
+      .hero {
+        padding: 32px 24px;
+      }
+
+      .hero h1 {
+        font-size: 32px;
+      }
+
+      .meta-grid,
+      .two-col,
+      .decision-rules {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="hero">
+      <h1>Product Requirements Document</h1>
+      <p><strong>Agent Warroom:</strong> a web app where indie hackers enter one app idea and watch multiple AI agents debate whether it is worth building, technically feasible, growth-ready, or likely to fail.</p>
+
+      <div class="meta-grid">
+        <div class="meta-card">
+          <span>Product</span>
+          <strong>Agent Warroom</strong>
+        </div>
+        <div class="meta-card">
+          <span>Audience</span>
+          <strong>Indie hackers</strong>
+        </div>
+        <div class="meta-card">
+          <span>MVP Goal</span>
+          <strong>Idea validation</strong>
+        </div>
+        <div class="meta-card">
+          <span>Decision Output</span>
+          <strong>Build / Kill / Modify</strong>
+        </div>
+      </div>
+    </header>
+
+    <section class="section">
+      <h2>1. Executive Summary</h2>
+      <p>
+        Agent Warroom helps solo founders and indie hackers avoid building weak ideas by simulating a structured startup debate among specialized AI agents. The user submits an app idea, then Founder, Engineer, Growth, and Skeptic agents independently evaluate it, criticize each other, and pass the full debate to a Judge agent for a final verdict.
+      </p>
+      <p>
+        The product should feel like a live startup warroom, but the underlying system must stay bounded, measurable, and useful. The main output is not entertainment. The main output is a concrete decision and next action.
+      </p>
+
+      <div class="callout">
+        <strong>Core positioning:</strong> Before you spend two weeks vibe-coding the wrong app, let five AI agents attack your idea first.
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>2. Problem Statement</h2>
+      <p>
+        Indie hackers often have too many app ideas and too little validation. With AI coding tools, building has become faster, but choosing what to build is still hard. Many builders waste days or weeks creating products with weak demand, unclear users, poor monetization, or hidden technical complexity.
+      </p>
+
+      <h3>Current pain points</h3>
+      <ul>
+        <li>Builders overestimate how good their ideas are.</li>
+        <li>They do not clearly define target users before coding.</li>
+        <li>They skip distribution thinking until after launch.</li>
+        <li>They underestimate technical complexity and maintenance cost.</li>
+        <li>They need honest pushback, not generic encouragement.</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>3. Target Users</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>User Type</th>
+            <th>Description</th>
+            <th>Main Need</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Indie Hacker</td>
+            <td>Solo builder with many SaaS or app ideas.</td>
+            <td>Choose which idea deserves focused execution.</td>
+          </tr>
+          <tr>
+            <td>AI-assisted Developer</td>
+            <td>Uses Claude Code, Cursor, Codex, or other AI coding tools.</td>
+            <td>Validate before vibe-coding too early.</td>
+          </tr>
+          <tr>
+            <td>Startup Beginner</td>
+            <td>Has ideas but lacks business validation experience.</td>
+            <td>Get structured feedback and next steps.</td>
+          </tr>
+          <tr>
+            <td>Product Builder</td>
+            <td>Wants quick critique before pitching or prototyping.</td>
+            <td>Improve positioning, MVP scope, and user strategy.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section">
+      <h2>4. Goals and Non-Goals</h2>
+      <div class="two-col">
+        <div>
+          <h3>Goals</h3>
+          <ul>
+            <li>Evaluate one idea through multiple expert perspectives.</li>
+            <li>Give a final Build / Kill / Modify recommendation.</li>
+            <li>Produce a useful next action, not just a score.</li>
+            <li>Make the experience feel like a live debate room.</li>
+            <li>Save and share validation reports.</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Non-Goals</h3>
+          <ul>
+            <li>Do not become a general chatbot.</li>
+            <li>Do not allow unlimited agent debate loops in MVP.</li>
+            <li>Do not replace real customer interviews.</li>
+            <li>Do not perform deep market research in the first version.</li>
+            <li>Do not build complex agent memory in MVP.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>5. Core User Journey</h2>
+      <div class="flow">User opens homepage
+  ↓
+Enters app idea
+  ↓
+Clicks "Start Warroom"
+  ↓
+Round 1: agents generate independent opinions
+  ↓
+Round 2: agents critique each other
+  ↓
+Judge agent reviews transcript
+  ↓
+User receives verdict: Build / Kill / Modify
+  ↓
+User can save, share, export, or refine idea</div>
+    </section>
+
+    <section class="section">
+      <h2>6. MVP Scope</h2>
+      <h3>Must Have</h3>
+      <ul>
+        <li>Idea input form.</li>
+        <li>Four debate agents: Founder, Engineer, Growth, Skeptic.</li>
+        <li>One Judge agent.</li>
+        <li>Fixed two-round debate flow.</li>
+        <li>Final verdict with score and next action.</li>
+        <li>Basic animated debate UI.</li>
+        <li>Session persistence in local SQLite.</li>
+        <li>Shareable report page.</li>
+      </ul>
+
+      <h3>Should Have</h3>
+      <ul>
+        <li>Export report to Markdown.</li>
+        <li>Copy final recommendation.</li>
+        <li>Regenerate judge verdict.</li>
+        <li>Example ideas on homepage.</li>
+        <li>Basic usage limit by anonymous browser session or logged-in user.</li>
+      </ul>
+
+      <h3>Could Have</h3>
+      <ul>
+        <li>Competitor research agent.</li>
+        <li>Customer interview question generator.</li>
+        <li>Landing page generator based on the idea.</li>
+        <li>Multiple debate styles: friendly, brutal, investor-style, technical-only.</li>
+      </ul>
+
+      <h3>Out of Scope for MVP</h3>
+      <ul>
+        <li>Real-time multi-user collaboration.</li>
+        <li>Full agent memory system.</li>
+        <li>Payment and subscription billing.</li>
+        <li>Browser-based market research automation.</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>7. Agent Roles</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Agent</th>
+            <th>Responsibility</th>
+            <th>Evaluation Focus</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Founder Agent</strong></td>
+            <td>Evaluates whether this is worth building as an indie product.</td>
+            <td>Pain, urgency, monetization, founder fit, MVP speed.</td>
+          </tr>
+          <tr>
+            <td><strong>Engineer Agent</strong></td>
+            <td>Reviews technical feasibility and implementation complexity.</td>
+            <td>Architecture, integrations, data, risk, time to MVP.</td>
+          </tr>
+          <tr>
+            <td><strong>Growth Agent</strong></td>
+            <td>Reviews acquisition potential and distribution strategy.</td>
+            <td>Channels, first users, virality, SEO, community, pricing.</td>
+          </tr>
+          <tr>
+            <td><strong>Skeptic Agent</strong></td>
+            <td>Attacks weak assumptions and explains why the idea may fail.</td>
+            <td>Demand risk, competition, unclear buyer, low willingness to pay.</td>
+          </tr>
+          <tr>
+            <td><strong>Judge Agent</strong></td>
+            <td>Synthesizes debate and gives final recommendation.</td>
+            <td>Final score, decision, strongest argument, biggest risk, next action.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section">
+      <h2>8. Debate Flow</h2>
+      <h3>Round 1: Independent Opinions</h3>
+      <p>Each non-judge agent receives only the original idea and scoring rubric. Agents must not see each other's responses yet. This prevents groupthink.</p>
+
+      <h3>Round 2: Cross-Critique</h3>
+      <p>Each agent receives the Round 1 transcript and must identify what other agents missed, where they agree, where they disagree, and whether their own position changed.</p>
+
+      <h3>Round 3: Judge Verdict</h3>
+      <p>The Judge receives the full transcript and returns a structured final decision.</p>
+
+      <div class="flow">Input Idea
+  ↓
+Founder | Engineer | Growth | Skeptic
+  ↓
+Independent JSON opinions
+  ↓
+Cross-critique round
+  ↓
+Judge synthesis
+  ↓
+Final report</div>
+    </section>
+
+    <section class="section">
+      <h2>9. Scoring Rubric</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Criteria</th>
+            <th>Weight</th>
+            <th>Meaning</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Pain Intensity</td>
+            <td>20</td>
+            <td>How painful and urgent is the user problem?</td>
+          </tr>
+          <tr>
+            <td>Clear Target User</td>
+            <td>15</td>
+            <td>Is the buyer or user specific enough?</td>
+          </tr>
+          <tr>
+            <td>Willingness to Pay</td>
+            <td>15</td>
+            <td>Would users likely pay for this?</td>
+          </tr>
+          <tr>
+            <td>Distribution Potential</td>
+            <td>15</td>
+            <td>Can the builder realistically reach users?</td>
+          </tr>
+          <tr>
+            <td>Technical Feasibility</td>
+            <td>10</td>
+            <td>Can an MVP be built without excessive complexity?</td>
+          </tr>
+          <tr>
+            <td>MVP Speed</td>
+            <td>10</td>
+            <td>Can a useful version be shipped quickly?</td>
+          </tr>
+          <tr>
+            <td>Competition Advantage</td>
+            <td>10</td>
+            <td>Is there a clear wedge or differentiation?</td>
+          </tr>
+          <tr>
+            <td>Founder Fit</td>
+            <td>5</td>
+            <td>Does the builder have an advantage in this domain?</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="decision-rules">
+        <div class="decision-card">
+          <strong><span class="badge success">BUILD</span> 80-100</strong>
+          <p>The idea has strong pain, clear users, feasible MVP, and credible distribution.</p>
+        </div>
+        <div class="decision-card">
+          <strong><span class="badge warning">MODIFY</span> 55-79</strong>
+          <p>The idea has promise but needs narrower positioning, simpler scope, or stronger distribution.</p>
+        </div>
+        <div class="decision-card">
+          <strong><span class="badge danger">KILL</span> 0-54</strong>
+          <p>The idea is too weak, unclear, crowded, expensive, or hard to validate.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>10. Functional Requirements</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Requirement</th>
+            <th>Priority</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>FR-001</td>
+            <td>User can submit an app idea using a textarea.</td>
+            <td><span class="badge success">Must</span></td>
+          </tr>
+          <tr>
+            <td>FR-002</td>
+            <td>System runs four non-judge agents against the idea.</td>
+            <td><span class="badge success">Must</span></td>
+          </tr>
+          <tr>
+            <td>FR-003</td>
+            <td>System runs a cross-critique round using Round 1 outputs.</td>
+            <td><span class="badge success">Must</span></td>
+          </tr>
+          <tr>
+            <td>FR-004</td>
+            <td>Judge agent returns final decision, score, summary, biggest risk, and next action.</td>
+            <td><span class="badge success">Must</span></td>
+          </tr>
+          <tr>
+            <td>FR-005</td>
+            <td>User can view debate as a timeline or agent card layout.</td>
+            <td><span class="badge success">Must</span></td>
+          </tr>
+          <tr>
+            <td>FR-006</td>
+            <td>System saves session, messages, and final result to database.</td>
+            <td><span class="badge success">Must</span></td>
+          </tr>
+          <tr>
+            <td>FR-007</td>
+            <td>User can open a shareable report URL.</td>
+            <td><span class="badge warning">Should</span></td>
+          </tr>
+          <tr>
+            <td>FR-008</td>
+            <td>User can export final report to Markdown.</td>
+            <td><span class="badge warning">Should</span></td>
+          </tr>
+          <tr>
+            <td>FR-009</td>
+            <td>User can refine idea and run another debate.</td>
+            <td><span class="badge warning">Should</span></td>
+          </tr>
+          <tr>
+            <td>FR-010</td>
+            <td>System supports auth and daily usage limits.</td>
+            <td><span class="badge">Later</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section">
+      <h2>11. Non-Functional Requirements</h2>
+      <ul>
+        <li><strong>Latency:</strong> MVP response should complete within 30-60 seconds for a full debate.</li>
+        <li><strong>Reliability:</strong> If one agent fails, the app should show partial results and retry only that agent.</li>
+        <li><strong>Cost Control:</strong> Limit idea length, transcript length, max tokens, and number of rounds.</li>
+        <li><strong>Security:</strong> All LLM API keys must stay server-side.</li>
+        <li><strong>Observability:</strong> Log provider, model, token usage, latency, and error reason per agent call.</li>
+        <li><strong>Backup:</strong> SQLite must be backed up daily using cron or a systemd timer.</li>
+        <li><strong>Deployment:</strong> The app should run as a long-lived Node.js process behind Nginx or Caddy on Ubuntu.</li>
+        <li><strong>Extensibility:</strong> Agent definitions should be configurable without rewriting orchestration logic.</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>12. Recommended Technical Stack</h2>
+      <p>
+        The MVP will be deployed on the user's own Ubuntu VPS. The stack should avoid managed SaaS dependencies where possible and use a simple local SQLite database. This keeps cost low, makes the system easy to understand, and fits a solo-builder deployment model.
+      </p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Layer</th>
+            <th>Choice</th>
+            <th>Reason</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Frontend</td>
+            <td>Next.js App Router + React + Tailwind</td>
+            <td>Fast MVP development, good UI structure, and one codebase for frontend and backend routes.</td>
+          </tr>
+          <tr>
+            <td>Backend</td>
+            <td>Next.js Route Handlers running on Node.js</td>
+            <td>Simple enough for the MVP. No separate backend service is needed at the beginning.</td>
+          </tr>
+          <tr>
+            <td>Database</td>
+            <td>SQLite</td>
+            <td>Best fit for a small self-hosted MVP. No external database server, low maintenance, easy backup, and enough for early traffic.</td>
+          </tr>
+          <tr>
+            <td>ORM / Query Layer</td>
+            <td>Drizzle ORM or Prisma with SQLite</td>
+            <td>Provides typed database access and migrations while keeping the schema simple.</td>
+          </tr>
+          <tr>
+            <td>LLM Layer</td>
+            <td>Provider wrapper around Claude / GPT / Gemini APIs</td>
+            <td>Keep the LLM provider replaceable. The app should call providers only from the server side.</td>
+          </tr>
+          <tr>
+            <td>Streaming</td>
+            <td>Server-Sent Events or streaming Route Handler</td>
+            <td>Creates a live debate feeling while staying simpler than WebSockets for the MVP.</td>
+          </tr>
+          <tr>
+            <td>Process Manager</td>
+            <td>systemd or PM2</td>
+            <td>Keeps the Next.js Node server running after SSH disconnects or server restart.</td>
+          </tr>
+          <tr>
+            <td>Reverse Proxy</td>
+            <td>Nginx or Caddy</td>
+            <td>Handles HTTPS, domain routing, gzip/brotli, and proxying traffic to the Node.js app.</td>
+          </tr>
+          <tr>
+            <td>Deployment</td>
+            <td>Ubuntu VPS + Git pull + build + restart script</td>
+            <td>Simple, cheap, and under the builder's control. Good enough before introducing CI/CD.</td>
+          </tr>
+          <tr>
+            <td>Backup</td>
+            <td>Scheduled SQLite backup using cron</td>
+            <td>Copy the SQLite file daily to a backup directory or remote storage. This is critical because the database is local.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Recommended VPS Architecture</h3>
+      <div class="flow">User Browser
+  ↓ HTTPS
+Nginx / Caddy Reverse Proxy
+  ↓ localhost:3000
+Next.js Node Server
+  ↓
+SQLite database file
+  ↓
+Daily backup job</div>
+
+      <h3>Recommended Deployment Shape</h3>
+      <pre><code>/opt/agent-warroom/
+  app source code
+  .env.production
+  data/
+    warroom.sqlite
+  backups/
+    warroom-YYYY-MM-DD.sqlite
+  scripts/
+    deploy.sh
+    backup.sh</code></pre>
+
+      <h3>Initial Production Command Flow</h3>
+      <pre><code>git pull origin main
+npm install
+npm run build
+npm run db:migrate
+systemctl restart agent-warroom</code></pre>
+    </section>
+
+    <section class="section">
+      <h2>13. Data Model</h2>
+      <pre><code>-- SQLite schema
+
+create table if not exists warroom_sessions (
+  id text primary key,
+  user_id text,
+  idea text not null,
+  status text not null default 'running',
+  final_decision text,
+  final_score real,
+  final_summary text,
+  created_at text not null default current_timestamp,
+  updated_at text not null default current_timestamp
+);
+
+create table if not exists warroom_messages (
+  id text primary key,
+  session_id text not null,
+  round integer not null,
+  agent_key text not null,
+  content text not null,
+  score_json text,
+  created_at text not null default current_timestamp,
+  foreign key (session_id) references warroom_sessions(id) on delete cascade
+);
+
+create table if not exists agent_configs (
+  id text primary key,
+  agent_key text not null unique,
+  name text not null,
+  role_prompt text not null,
+  is_active integer not null default 1,
+  created_at text not null default current_timestamp
+);
+
+create index if not exists idx_warroom_messages_session_id
+on warroom_messages(session_id);
+
+create index if not exists idx_warroom_sessions_created_at
+on warroom_sessions(created_at);</code></pre>
+
+      <h3>SQLite Notes</h3>
+      <ul>
+        <li>Generate UUIDs in the application layer and store them as <code>text</code>.</li>
+        <li>Store structured LLM outputs in <code>score_json</code> as JSON string text.</li>
+        <li>Use SQLite WAL mode for better read/write behavior on a small web app.</li>
+        <li>Keep the database file outside the Git repository, for example <code>/opt/agent-warroom/data/warroom.sqlite</code>.</li>
+        <li>Run daily backups before the app grows beyond a small solo-MVP workload.</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>14. API Design</h2>
+      <h3>POST /api/warroom/run</h3>
+      <p>Creates a new warroom session and runs the debate.</p>
+      <pre><code>{
+  "idea": "A web app where AI agents debate my app idea"
+}</code></pre>
+
+      <h3>Response</h3>
+      <pre><code>{
+  "sessionId": "uuid",
+  "roundOneResults": {
+    "founder": {},
+    "engineer": {},
+    "growth": {},
+    "skeptic": {}
+  },
+  "critiqueResults": {
+    "founder": {},
+    "engineer": {},
+    "growth": {},
+    "skeptic": {}
+  },
+  "judgeResult": {
+    "decision": "MODIFY",
+    "score": 72,
+    "summary": "...",
+    "biggestRisk": "...",
+    "nextAction": "..."
+  }
+}</code></pre>
+
+      <h3>GET /api/warroom/:id</h3>
+      <p>Returns saved session, debate transcript, and judge verdict.</p>
+    </section>
+
+    <section class="section">
+      <h2>15. UI Requirements</h2>
+      <h3>Homepage</h3>
+      <ul>
+        <li>Clear headline explaining the product.</li>
+        <li>Textarea for idea input.</li>
+        <li>Example idea buttons.</li>
+        <li>Primary CTA: Start Warroom.</li>
+      </ul>
+
+      <h3>Debate Room</h3>
+      <ul>
+        <li>Agent cards for Founder, Engineer, Growth, Skeptic, and Judge.</li>
+        <li>Round indicator: Opinion, Crossfire, Verdict.</li>
+        <li>Typing/thinking animation while each agent is running.</li>
+        <li>Visible score and recommendation per agent.</li>
+        <li>Judge verdict panel at the end.</li>
+      </ul>
+
+      <h3>Report Page</h3>
+      <ul>
+        <li>Original idea.</li>
+        <li>Final decision badge.</li>
+        <li>Score bar.</li>
+        <li>Summary of strongest argument and biggest risk.</li>
+        <li>Recommended next action.</li>
+        <li>Full debate transcript.</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>16. Prompt Contract</h2>
+      <p>All agents must return valid JSON. This makes the UI reliable and prevents messy text parsing.</p>
+      <pre><code>{
+  "summary": "Short opinion",
+  "score": 0,
+  "strengths": ["..."],
+  "risks": ["..."],
+  "recommendation": "BUILD | KILL | MODIFY"
+}</code></pre>
+
+      <h3>Judge Output Contract</h3>
+      <pre><code>{
+  "decision": "BUILD | KILL | MODIFY",
+  "score": 0,
+  "summary": "...",
+  "strongest_argument": "...",
+  "biggest_risk": "...",
+  "next_action": "...",
+  "mvp_scope": ["..."],
+  "first_user_strategy": ["..."]
+}</code></pre>
+    </section>
+
+    <section class="section">
+      <h2>17. Success Metrics</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Metric</th>
+            <th>Target for MVP</th>
+            <th>Why It Matters</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Idea-to-verdict completion rate</td>
+            <td>&gt; 70%</td>
+            <td>Measures whether users finish the core flow.</td>
+          </tr>
+          <tr>
+            <td>Average sessions per user</td>
+            <td>&gt; 2</td>
+            <td>Shows whether users test multiple ideas.</td>
+          </tr>
+          <tr>
+            <td>Report shares</td>
+            <td>&gt; 10% of sessions</td>
+            <td>Indicates social/viral potential.</td>
+          </tr>
+          <tr>
+            <td>Modify decision follow-up rate</td>
+            <td>&gt; 20%</td>
+            <td>Shows users trust the feedback enough to iterate.</td>
+          </tr>
+          <tr>
+            <td>Free-to-paid conversion</td>
+            <td>3-5%</td>
+            <td>Validates monetization potential.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section">
+      <h2>18. Monetization</h2>
+      <h3>Free Plan</h3>
+      <ul>
+        <li>3 warroom debates per day.</li>
+        <li>Basic agents.</li>
+        <li>Shareable report.</li>
+      </ul>
+
+      <h3>Paid Plan</h3>
+      <ul>
+        <li>Unlimited or higher debate quota.</li>
+        <li>Advanced agents: Investor, UX, Pricing, Competitor, SEO.</li>
+        <li>Deep report export.</li>
+        <li>Customer interview script generation.</li>
+        <li>Landing page and MVP scope generator.</li>
+      </ul>
+
+      <h3>Suggested Pricing</h3>
+      <p><strong>$9/month</strong> for indie hackers who constantly evaluate ideas. Keep the first paid version simple.</p>
+    </section>
+
+    <section class="section">
+      <h2>19. Risks and Mitigations</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Risk</th>
+            <th>Impact</th>
+            <th>Mitigation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Agents produce generic feedback.</td>
+            <td>Product feels like a toy.</td>
+            <td>Use strict rubric, role-specific prompts, and concrete next-action requirement.</td>
+          </tr>
+          <tr>
+            <td>LLM cost grows too quickly.</td>
+            <td>Bad unit economics.</td>
+            <td>Limit idea length, rounds, max tokens, and use cheaper model for critique.</td>
+          </tr>
+          <tr>
+            <td>Output is entertaining but not actionable.</td>
+            <td>Low retention.</td>
+            <td>Judge must always produce MVP scope and validation task.</td>
+          </tr>
+          <tr>
+            <td>Users distrust AI decision.</td>
+            <td>Weak conversion.</td>
+            <td>Show reasoning, disagreement, assumptions, and evidence gaps.</td>
+          </tr>
+          <tr>
+            <td>Too many similar tools appear.</td>
+            <td>Low differentiation.</td>
+            <td>Position specifically for indie hackers and AI-assisted builders.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section">
+      <h2>20. Milestone Plan</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Milestone</th>
+            <th>Scope</th>
+            <th>Success Criteria</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>M1 - Local Prototype</td>
+            <td>Input idea, hardcoded agents, final JSON output.</td>
+            <td>One full debate works from local app.</td>
+          </tr>
+          <tr>
+            <td>M2 - MVP UI</td>
+            <td>Agent cards, round display, verdict panel.</td>
+            <td>User can understand debate without reading raw JSON.</td>
+          </tr>
+          <tr>
+            <td>M3 - Persistence</td>
+            <td>SQLite session storage and report page.</td>
+            <td>Every debate has a shareable URL.</td>
+          </tr>
+          <tr>
+            <td>M4 - Public Beta</td>
+            <td>Landing page, examples, basic limits.</td>
+            <td>10-30 real users test the app.</td>
+          </tr>
+          <tr>
+            <td>M5 - Monetization Test</td>
+            <td>Paid plan, advanced reports, usage limits.</td>
+            <td>First paying users or strong waitlist signal.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section">
+      <h2>21. Open Questions</h2>
+      <ul>
+        <li>Should the first version require login or allow anonymous usage?</li>
+        <li>Should authentication be skipped in MVP and replaced with simple anonymous session IDs?</li>
+        <li>Which default model gives the best quality/cost balance?</li>
+        <li>Should debates be streamed live or revealed round-by-round?</li>
+        <li>Should users be able to choose debate style?</li>
+        <li>Should the report include a public share page for viral growth?</li>
+        <li>Should SQLite backups stay local only, or also sync to remote storage?</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>22. Recommended First Build</h2>
+      <p>
+        Build the smallest useful version first: one page, one input, five hardcoded agents, one final report. Do not start with advanced multi-agent orchestration. The product will win or fail based on whether the final recommendation is sharp enough to change what the user does next.
+      </p>
+
+      <div class="callout">
+        <strong>First validation task:</strong> Build the MVP in 2-3 days, run 20 of your own app ideas through it, and publish the 5 most interesting warroom reports as public examples.
+      </div>
+    </section>
+  </main>
+</body>
+</html>
+
